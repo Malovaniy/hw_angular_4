@@ -1,0 +1,53 @@
+<div class="reletiveModal" *ngIf="isTrue">
+    <div class="block">
+        <div class="mod">
+            <h3 class="headtext">Add phone</h3>
+            <hr>
+            <div class="container">
+              <input type="text" class="form-control" placeholder="first name" [(ngModel)]="firstName">
+              <input type="text" class="form-control" placeholder="last name" [(ngModel)]="lastName" >
+              <input type="text" class="form-control" placeholder="number" [(ngModel)]="number">
+              <button class="btn btn-primary bt50 close" (click)="changer()">close</button>
+              <button class="btn btn-success bt50 save" *ngIf="isTrue" (click)="save()">save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>My phone book!</h2>
+    <hr>
+
+
+    <form class="container row">
+        <input name="textSort" type="text" class="inp" [(ngModel)]="field">
+        <button class="btn btn-success btAdd " (click)="changer()">add phone</button>
+    </form>
+   
+
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" id="1" (click)="sortArr(1)"> First name <span *ngIf="bool1">▼</span> </th>
+            <th scope="col" id="2" (click)="sortArr(2)">Last name <span *ngIf="bool2">▼</span> </th>
+            <th scope="col" id="3" (click)="sortArr(3)">number <span *ngIf="bool3">▼</span> </th>
+            <th scope="col">edit</th>
+            <th scope="col">delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of arrUser | search:field; let i = index" >     
+            <td>{{item.fname}}</td>
+            <td>{{item.sname}}</td>
+            <td>{{item.number }}</td>
+            <td><button class="btn btn-warning edit" id="{{i}}" (click)="editUs(i)">Edit </button></td>
+            <td><button class="btn btn-danger delete" id="{{i}}" (click)="deleteUs(i)">Delete </button></td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+
